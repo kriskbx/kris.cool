@@ -18,4 +18,4 @@
 
 ## license
 
-MIT
+MIT, All trademarks belong to their respective owners.
