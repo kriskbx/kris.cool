@@ -1,0 +1,105 @@
+# Site settings
+title: kris.cool - webdevelopment & videoproduction
+email: m@kris.cool
+description: Hey there, I'm Kris a Berlin, Germany based webdeveloper that also produces wonderful videos.
+baseurl: ""
+url: "https://kris.cool"
+permalink: /:year/:month/:title
+
+# Portfolio
+portfolio:
+  web:
+    - image: roth-logo.jpg
+      title: Claudia Roth
+      link: http://claudia-roth.de
+      tags:
+        - client-project
+        - wordpress
+        - code
+    - image: wwf-logo.jpg
+      title: WWF EP2014
+      link: http://ep2014.wwf.eu
+      tags:
+        - client-project
+        - cakephp
+        - code
+    - image: mv-logo.jpg
+      title: Mit Vergnügen
+      link: http://mitvergnuegen.com
+      tags:
+        - client-project
+        - wordpress
+        - design
+        - code
+    - image: rsspipes-logo.jpg
+      title: rsspipes beta
+      link: http://rsspipes.org
+      tags:
+        - personal-project
+        - laravel-lumen
+        - concept
+        - design
+        - code
+    - image: defense-logo.jpg
+      title: defense mania
+      link: http://github.com/DefenseMania/defense-mania
+      tags:
+        - personal-project
+        - processing
+        - opensource
+        - crossplatform
+        - towerdefense
+        - game
+        - concept
+        - design
+        - code
+    - image: whatsapp-logo.jpg
+      title: whatsapp-sharing
+      link: http://whatsapp-sharing.com
+      tags:
+        - personal-project
+        - js-library
+        - opensource
+        - concept
+        - code
+  video:
+    - image: bosch-logo.jpg
+      title: DigiCuisine at IFA 2014
+      link: https://www.youtube.com/watch?v=xu_REb67tAA
+      tags:
+        - client-project
+        - production
+        - camera
+        - editing
+    - image: fete-logo.jpg
+      title: Fête de la Musique Berlin 2014 / fetejam
+      link: https://www.youtube.com/watch?v=pWiBbPp4Pcw
+      tags:
+        - client-project
+        - concept
+        - production
+        - direction
+        - editing
+    - image: bane-logo.jpg
+      title: Bane "Final Backwards Glance"
+      link: https://www.youtube.com/watch?v=dknrYxMhWdU
+      tags:
+        - client-project
+        - additional-camera
+
+# Build settings
+markdown: kramdown
+gems:
+  - octopress-minify-html
+sass:
+  style: :compressed
+image:
+  source: images/full
+  output: images
+  presets:
+    logo:
+      width: 180
+      height: AUTO
+    default:
+      width: 600
+      height: AUTO

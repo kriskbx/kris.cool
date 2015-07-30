@@ -1,0 +1,5 @@
+src/_site
+src/.sass-cache
+/.idea
+/node_modules
+**/.DS_STORE

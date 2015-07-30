@@ -1,0 +1,35 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" property="og:description">
+    <meta content="{{ site.title }}" property="og:site_name">
+    {% if page.title %}
+    <meta content="{{ page.title }}" property="og:title">
+    <meta content="article" property="og:type">
+    {% else %}
+    <meta content="{{ site.title }}" property="og:title">
+    <meta content="website" property="og:type">
+    {% endif %}
+    {% if page.url %}
+    <meta content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" property="og:url">
+    {% endif %}
+    {% if page.date %}
+    <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
+    {% endif %}
+    {% if page.image %}
+    <meta content="{{ page.image | prepend: "/images/full/" | prepend: site.baseurl }}" property="og:image">
+    {% else %}
+    <meta content="{{ "/images/full/logo.png" | prepend: site.baseurl }}" property="og:image">
+    {% endif %}
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+
+    <script type="text/javascript">
+        /*! loadCSS: [c]2014 @scottjehl, MIT Lic */ function loadCSS(e,n,o,t){"use strict";var d=window.document.createElement("link"),i=n||window.document.getElementsByTagName("script")[0],r=window.document.styleSheets;return d.rel="stylesheet",d.href=e,d.media="only x",t&&(d.onload=t),i.parentNode.insertBefore(d,i),d.onloadcssdefined=function(e){for(var n,o=0;o<r.length;o++)r[o].href&&r[o].href===d.href&&(n=!0);n?e():setTimeout(function(){d.onloadcssdefined(e)})},d.onloadcssdefined(function(){d.media=o||"all"}),d};
+        loadCSS('{{ "/css/main.css" | prepend: site.baseurl }}');
+    </script>
+</head>

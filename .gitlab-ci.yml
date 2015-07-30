@@ -1,0 +1,11 @@
+before_script:
+  - bundler
+  - npm install
+  - cd src && jekyll build
+  - cd ../ && grunt
+dev:
+  script:
+  - grunt deploy
+  tags:
+  only:
+  - release
