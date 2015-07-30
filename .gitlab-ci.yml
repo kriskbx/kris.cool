@@ -1,6 +1,6 @@
 before_script:
-  - bundler
   - npm install
+  - bundler install
   - cd src && jekyll build
   - cd ../ && grunt
 dev:
