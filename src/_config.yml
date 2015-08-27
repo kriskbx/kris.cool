@@ -88,6 +88,7 @@ portfolio:
         - additional-camera
 
 # Build settings
+highlighter: pygments
 markdown: kramdown
 gems:
   - octopress-minify-html
