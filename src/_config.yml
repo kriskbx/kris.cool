@@ -1,7 +1,7 @@
 # Site settings
-title: kris.cool - webdevelopment & videoproduction
+title: kris.cool - webdevelopment #& videoproduction
 email: m@kris.cool
-description: Hey there, I'm Kris a Berlin, Germany based webdeveloper that also produces wonderful videos.
+description: Hey there, I'm Kris a Berlin, Germany based webdeveloper #that also produces wonderful videos.
 baseurl: ""
 url: "https://kris.cool"
 permalink: /:year/:month/:title
