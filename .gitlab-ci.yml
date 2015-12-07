@@ -2,7 +2,7 @@ before_script:
   - npm install
   - bundler install
   - cd src && jekyll build
-  - cd ../ && grunt
+  - cd ../ && grunt --force
 dev:
   script:
   - grunt deploy
