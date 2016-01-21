@@ -57,57 +57,57 @@ layout: default
     </div>
 </div>
 
-<!--<div>-->
+<div>
 
-    <!--<input type="checkbox" id="video-toggle" class="toggle-content">-->
+    <input type="checkbox" id="video-toggle" class="toggle-content">
 
-    <!--<div class="fancy-title">-->
-        <!--<h2>-->
-            <!--Are you looking for <label onclick="smoothScroll.animateScroll(this,'#video');" for="video-toggle"-->
-                                       <!--class="high-brand-2 clickable">videos</label>?<br>-->
-            <!--I also produce <em>wonderful</em> videos for your<br>-->
-            <!--business, event or band.-->
-        <!--</h2>-->
+    <div class="fancy-title">
+        <h2>
+            Are you looking for <label onclick="smoothScroll.animateScroll(this,'#video');" for="video-toggle"
+                                       class="high-brand-2 clickable">videos</label>?<br>
+            I also produce <em>wonderful</em> videos for your<br>
+            business, event or band.
+        </h2>
 
-        <!--<p class="lead">-->
-            <!--Meet my team of creative and talented DOPs, directors & writers<br>-->
-            <!--and let‘s create something beautiful together. <3-->
-        <!--</p>-->
-    <!--</div>-->
+        <p class="lead">
+            Meet my team of creative and talented DOPs, directors & writers<br>
+            and let‘s create something beautiful together. <3
+        </p>
+    </div>
 
-    <!--<div class="fancy-button fancy-button-2">-->
-        <!--<label for="video-toggle">-->
-            <!--<span data-more="more" data-less="less"></span>-->
-        <!--</label>-->
-    <!--</div>-->
+    <div class="fancy-button fancy-button-2">
+        <label for="video-toggle">
+            <span data-more="more" data-less="less"></span>
+        </label>
+    </div>
 
-    <!--<div class="content-block" id="video">-->
+    <div class="content-block" id="video">
 
-        <!--<p><em>Take a look at some cool video projects I've done so far:</em></p>-->
+        <p><em>Take a look at some cool video projects I've done so far:</em></p>
 
-        <!--<ul class="portfolio">-->
-            <!--{% for item in site.portfolio.video %}-->
-            <!--<li>-->
-                <!--{% assign logo_image = item.image %}-->
-                <!--<a href="{{ item.link }}" target="_blank">{% image logo {{logo_image}} width="90" height="51" %}</a>-->
-                <!--<h4><a class="portfolio-link-2" href="{{ item.link }}" target="_blank">{{ item.title }}</a></h4>-->
-                <!--{% for item_tag in item.tags %}-->
-                <!--<span>#{{ item_tag }}</span>&nbsp;-->
-                <!--{% endfor %}-->
-            <!--</li>-->
-            <!--{% endfor %}-->
-        <!--</ul>-->
+        <ul class="portfolio">
+            {% for item in site.portfolio.video %}
+            <li>
+                {% assign logo_image = item.image %}
+                <a href="{{ item.link }}" target="_blank">{% image logo {{logo_image}} width="90" height="51" %}</a>
+                <h4><a class="portfolio-link-2" href="{{ item.link }}" target="_blank">{{ item.title }}</a></h4>
+                {% for item_tag in item.tags %}
+                <span>#{{ item_tag }}</span>&nbsp;
+                {% endfor %}
+            </li>
+            {% endfor %}
+        </ul>
 
-        <!--<p class="contact">-->
-            <!--<a href="javascript:location='mailto:\u006d\u0040\u006b\u0072\u0069\u0073\u002e\u0063\u006f\u006f\u006c';void 0"-->
-               <!--class="btn btn-2">Contact Me</a><br>-->
-            <!--<small>PGP-Key: <a href="http://pgp.mit.edu:11371/pks/lookup?op=get&search=0x640D0260" target="_blank">0x640D0260</a>-->
-            <!--</small>-->
-        <!--</p>-->
+        <p class="contact">
+            <a href="javascript:location='mailto:\u006d\u0040\u006b\u0072\u0069\u0073\u002e\u0063\u006f\u006f\u006c';void 0"
+               class="btn btn-2">Contact Me</a><br>
+            <small>PGP-Key: <a href="http://pgp.mit.edu:11371/pks/lookup?op=get&search=0x640D0260" target="_blank">0x640D0260</a>
+            </small>
+        </p>
 
-    <!--</div>-->
+    </div>
 
-<!--</div>-->
+</div>
 
 <div class="fancy-title">
     <h2>
