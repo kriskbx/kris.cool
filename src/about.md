@@ -6,7 +6,7 @@ permalink: /about/
 
 ![Kris](https://secure.gravatar.com/avatar/8b3308d723615eae9a6573cdefada6a8?s=600)
 
-Hey there, I'm **Kris**: the guy with that cool domain name. I'm also a freelance __webdev__ and __videoproducer__.
+Hey there, I'm **Kris**: the guy with that cool domain name. I'm also a freelance __webdev__ and __filmmaker__.
 
 I built my first website in 2001, got a "Bachelor of Engineering" degree, worked for a marketing/web agency as a developer, a movie/tv production company as a cutter/runner/assistent and an international garden exhibition as a designer.
 

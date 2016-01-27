@@ -9,7 +9,9 @@ excerpt: "Track your time automagically with Glass and store it in your Git repo
 
 There are some things that all freelancers need to do but in the end don't want to do: measuring everything money related, writing invoices and quotes, answering mails, all this nasty tax and authorities related paperwork, backing things up, organizing your work and clients, tracking your time and many more. You want to keep focussed on the project, build cool things and not be distracted by all of this.
 
-Thankfully we live in a digital world that offers an app for everything. Using tools keeps you focussed on the things you build instead of wasting your time with stuff that can be automated, right? Today I want to talk about time tracking and how I do it. This article is part of a series how I organize and do things in my daily work life.
+Thankfully we live in a digital world that offers an app for everything. Using tools keeps you focussed on the things you build instead of wasting your time with stuff that can be automated, right? Today I want to talk about time tracking and how I do it.
+
+> This article is part of a series how I organize and do things in my daily work life. Read the other episodes here: **[Stay up to date](/2016/01/stay-up-to-date-and-subscribe-anonymously-to-public-social-network-accounts)**
 
 ### Tools, tools, tools
 

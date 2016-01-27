@@ -9,19 +9,19 @@ permalink: /:year/:month/:title
 # Portfolio
 portfolio:
   web:
-    - image: roth-logo.jpg
-      title: Claudia Roth
-      link: http://claudia-roth.de
-      tags:
-        - client-project
-        - wordpress
-        - code
     - image: wwf-logo.jpg
       title: WWF EP2014
       link: http://ep2014.wwf.eu
       tags:
         - client-project
         - cakephp
+        - code
+    - image: roth-logo.jpg
+      title: Claudia Roth
+      link: http://claudia-roth.de
+      tags:
+        - client-project
+        - wordpress
         - code
     - image: mv-logo.jpg
       title: Mit Vergnügen
@@ -31,8 +31,27 @@ portfolio:
         - wordpress
         - design
         - code
+    - image: judith-logo.jpg
+      title: Judith Holofernes
+      link: http://www.judith-holofernes.de
+      tags:
+        - client-project
+        - wordpress
+        - concept
+        - design
+        - logo
+        - code
+    - image: hsfr-logo.jpg
+      title: hochschulfreun.de
+      link: http://www.hochschulfreun.de
+      tags:
+        - client-project
+        - wordpress
+        - design
+        - logo
+        - code
     - image: rsspipes-logo.jpg
-      title: rsspipes beta
+      title: rsspipes
       link: http://rsspipes.org
       tags:
         - personal-project
@@ -52,15 +71,6 @@ portfolio:
         - game
         - concept
         - design
-        - code
-    - image: whatsapp-logo.jpg
-      title: whatsapp-sharing
-      link: http://whatsapp-sharing.com
-      tags:
-        - personal-project
-        - js-library
-        - opensource
-        - concept
         - code
   video:
     - image: bosch-logo.jpg
