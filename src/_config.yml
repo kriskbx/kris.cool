@@ -61,7 +61,7 @@ portfolio:
         - code
     - image: defense-logo.jpg
       title: defense mania
-      link: http://github.com/DefenseMania/defense-mania
+      link: https://defensemania.de
       tags:
         - personal-project
         - processing
