@@ -3,11 +3,7 @@ stages:
   - build
   - deploy
 
-cache:
-  key: "$CI_BUILD_REF"
-  paths:
-  - node_modules/
-  - src/_site/
+disable_cache: true
 
 install-dependencies:
   stage: init
