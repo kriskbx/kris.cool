@@ -12,5 +12,8 @@ module.exports = function (grunt) {
     grunt.registerTask('deploy', [
         'rsync'
     ]);
+    grunt.registerTask('deploy:test', [
+        'rsync:test'
+    ]);
 
 };

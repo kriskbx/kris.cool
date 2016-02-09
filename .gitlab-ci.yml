@@ -3,22 +3,24 @@ stages:
   - build
   - deploy
 
-cache:
-  key: "$CI_BUILD_NAME"
-  paths:
-  - node_modules/
-
 install-dependencies:
   stage: init
   script:
-  - npm-install-missing
-  - bundler install
+  - echo "$CI_BUILD_NAME"
+  cache:
+    key: "$CI_BUILD_NAME"
+    paths:
+    - node_modules/
 
 build:
   stage: build
   script:
   - cd src && jekyll build
-  - cd ../ && grunt --force 
+  - cd ../ && grunt --force
+  cache:
+    key: "$CI_BUILD_NAME"
+    paths:
+    - node_modules/
 
 deploy-to-live:
   stage: deploy
@@ -26,6 +28,10 @@ deploy-to-live:
   - release
   script:
   - grunt deploy
+  cache:
+    key: "$CI_BUILD_NAME"
+    paths:
+    - node_modules/
   artifacts:
     paths:
     - src/_site/
@@ -36,6 +42,10 @@ deploy-to-test:
   - master
   script:
   - grunt deploy:test
+  cache:
+    key: "$CI_BUILD_NAME"
+    paths:
+    - node_modules/
   artifacts:
     paths:
     - src/_site/
