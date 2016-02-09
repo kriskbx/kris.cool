@@ -3,8 +3,6 @@ stages:
   - build
   - deploy
 
-disable_cache: true
-
 install-dependencies:
   stage: init
   script:
@@ -32,4 +30,4 @@ deploy-to-test:
   only:
   - master
   script:
-  - grunt deploy:test 
+  - grunt deploy:test
