@@ -22,7 +22,6 @@ build:
   - cd ../ && grunt --force
   artifacts:
     paths:
-    - node_modules/
     - src/_site/
 
 deploy-to-live:
