@@ -5,8 +5,7 @@ stages:
 
 cache:
   key: "$CI_BUILD_REF"
-  paths:
-  - node_modules/
+  untracked: true
 
 install-dependencies:
   stage: init
@@ -19,6 +18,9 @@ build:
   script:
   - cd src && jekyll build
   - cd ../ && grunt --force
+  artifacts:
+    paths:
+    - src/_site/
 
 deploy-to-live:
   stage: deploy
@@ -26,9 +28,6 @@ deploy-to-live:
   - release
   script:
   - grunt deploy
-  artifacts:
-    paths:
-    - src/_site/
 
 deploy-to-test:
   stage: deploy
@@ -36,6 +35,3 @@ deploy-to-test:
   - master
   script:
   - grunt deploy:test
-  artifacts:
-    paths:
-    - src/_site/
