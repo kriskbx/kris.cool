@@ -5,7 +5,9 @@ stages:
 
 cache:
   key: "$CI_BUILD_REF"
-  untracked: true
+  paths:
+  - node_modules/
+  - src/_site/
 
 install-dependencies:
   stage: init
