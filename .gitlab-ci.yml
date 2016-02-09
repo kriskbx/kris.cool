@@ -1,11 +1,37 @@
 before_script:
   - npm install
   - bundler install
+
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+  - node_modules/
+
+build:
+  stage: build
+  script:
   - cd src && jekyll build
   - cd ../ && grunt --force
-dev:
-  script:
-  - grunt deploy
-  tags:
+
+deploy-to-live:
+  stage: deploy
   only:
   - release
+  script:
+  - grunt deploy
+  artifacts:
+    paths:
+    - src/_site/
+
+deploy-to-test:
+  stage: deploy
+  only:
+  - master
+  script:
+  - grunt deploy:test
+  artifacts:
+    paths:
+    - src/_site/
