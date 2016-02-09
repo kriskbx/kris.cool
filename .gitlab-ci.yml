@@ -1,10 +1,18 @@
-before_script:
-  - npm-install-missing
-  - bundler install
-
 stages:
+  - init
   - build
   - deploy
+
+cache:
+  key: "$CI_BUILD_NAME"
+  paths:
+  - node_modules/
+
+install-dependencies:
+  stage: init
+  script:
+  - npm-install-missing
+  - bundler install
 
 build:
   stage: build
@@ -18,7 +26,7 @@ deploy-to-live:
   - release
   script:
   - grunt deploy
-  artifacts: 
+  artifacts:
     paths:
     - src/_site/
 
