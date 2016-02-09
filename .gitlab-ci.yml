@@ -1,8 +1,5 @@
-before_script:
-  - npm install
-  - bundler install
-
 stages:
+  - install
   - build
   - deploy
 
@@ -10,11 +7,20 @@ cache:
   paths:
   - node_modules/
 
+install-dependencies:
+  stage: install
+  script:
+  - npm-install-missing
+  - bundler install
+
 build:
   stage: build
   script:
   - cd src && jekyll build
   - cd ../ && grunt --force
+  artifacts:
+    paths:
+    - src/_site/
 
 deploy-to-live:
   stage: deploy
@@ -22,9 +28,6 @@ deploy-to-live:
   - release
   script:
   - grunt deploy
-  artifacts:
-    paths:
-    - src/_site/
 
 deploy-to-test:
   stage: deploy
@@ -32,6 +35,3 @@ deploy-to-test:
   - master
   script:
   - grunt deploy:test
-  artifacts:
-    paths:
-    - src/_site/
