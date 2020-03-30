@@ -75,7 +75,7 @@
         }
 
         &__texture {
-            margin: -1px 0;
+            margin: -2px 0;
             display: flex;
 
             svg {

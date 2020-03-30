@@ -23,10 +23,11 @@
         list-style: none;
         padding: 0;
         font-weight: $fontWeighMedium;
+        flex-wrap: wrap;
     }
 
     .link-item {
-        margin: 0 .8rem;
+        margin: .5rem .8rem;
 
         a {
             opacity: .5;
