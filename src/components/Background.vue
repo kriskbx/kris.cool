@@ -76,7 +76,6 @@
 
         &__texture {
             margin: -2px 0;
-            display: flex;
 
             svg {
                 width: 100%;

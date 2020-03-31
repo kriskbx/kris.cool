@@ -2,7 +2,7 @@
 order: 1
 url: 'https://scrumpy.io'
 title: 'Scrumpy'
-color: false
+color: ''
 excerpt: 'Scrumpy is a project management app for agile teams, featuring Scrum and Kanban boards. I joined the Scrumpy team in September 2018 to support them with frontend and backend development'
 tags:
     - 'Laravel'
