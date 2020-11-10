@@ -15,9 +15,7 @@
                     <p>I also make cool shortfilms and videos. <a href="https://vimeo.com/kriskbx" target="_blank">At
                         first as freelancer</a> for clients & agencies but now
                         it’s more of a hobby.</p>
-                    <p>Personally I like birds, sloths & anteaters, hiking & beeing outdoors, longboards and
-                        Indie/Punk music. I believe in a better world and try to take responsibility by living plant
-                        based and as sustainable as I can.</p>
+                    <p>Personally I like birds, sloths & anteaters, science, hiking & beeing outdoors, longboards as well as Indie/Hardcore-Punk music.</p>
                 </div>
 
                 <Navigation :links="links"/>
