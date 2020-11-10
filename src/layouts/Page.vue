@@ -20,7 +20,6 @@
                 },
             ]"/>
         </Header>
-        </Header>
 
         <div class="page__content">
             <slot/>
