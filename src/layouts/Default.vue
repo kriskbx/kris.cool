@@ -6,7 +6,7 @@
             </template>
 
             <p class="header__intro">
-                » I’m a fullstack web developer, currently working at
+                » I’m a backend developer, currently working at
                 <a href="https://ueber.io" target="_blank">überdosis</a>. I mostly use PHP and the
                 Laravel framework for backend development as well as Vue.js or Alpine.js for frontend work. I’m
                 a huge workflow automation nerd and can’t shut up about Docker, Continuos Integration and all
