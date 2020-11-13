@@ -6,7 +6,7 @@ import DefaultLayout from '~/layouts/Default.vue'
 export default function (Vue, {router, head, isClient}) {
     head.meta.push({
         name: 'description',
-        content: 'Hey, I\'m Kris: a Berlin based fullstack web developer.',
+        content: 'Hey, I\'m Kris: a Berlin based backend developer.',
     })
 
     head.meta.push({
@@ -26,7 +26,7 @@ export default function (Vue, {router, head, isClient}) {
 
     head.meta.push({
         property: 'og:description',
-        content: 'Hey, I\'m Kris: a Berlin based fullstack web developer.',
+        content: 'Hey, I\'m Kris: a Berlin based backend developer.',
     })
 
     head.meta.push({
