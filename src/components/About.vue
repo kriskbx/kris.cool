@@ -11,11 +11,11 @@
                         clients & agencies as Freelance Developer. Since 2018 I’m at <a href="https://ueber.io"
                                                                                         target="_blank">überdosis</a>
                         as Senior Backend Developer and DevOps Engineer.</p>
-                    <p>Out of pure curiosity I studied "Transport Systems: Aeronautics and space engineering" for a couple of semesters besides my day job. I love all this space stuff and wanted to learn something new.</p>
+                    <p>Out of pure curiosity I studied "Transport Systems: Aeronautics and space engineering" for a couple of semesters besides my day job. I love STEM stuff and wanted to learn something new.</p>
                     <p>I also make cool shortfilms and videos. <a href="https://vimeo.com/kriskbx" target="_blank">At
                         first as freelancer</a> for clients & agencies but now
                         it’s more of a hobby.</p>
-                    <p>Personally I like birds, sloths & anteaters, science, hiking & beeing outdoors, longboards as well as Indie/Hardcore-Punk music.</p>
+                    <p>Personally I like birds, science, hiking & beeing outdoors, longboards as well as Indie/Hardcore-Punk music.</p>
                 </div>
 
                 <Navigation :links="links"/>
