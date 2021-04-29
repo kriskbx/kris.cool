@@ -1,0 +1,277 @@
+# ----------------------------------------------------------------------
+# GitLab CI/CD Configuration
+# ----------------------------------------------------------------------
+#
+# To configure GitLabs Pipeline completely you need to still do some
+# steps by hand. It only takes a few minutes, so let's go:
+#
+# 1. Setup deploy tokens for DEV and PROD
+#    As stated below we need deploy tokens with registry access for our
+#    development and production environments. Go to your "Project, Settings,
+#    Repository, Deploy Tokens" and create two new tokens. The name
+#    should be `development` and `production`. Give them the `read_registry`
+#    scope and leave the username empty. Write down the resulting tokens and
+#    user names and head over to "Project, Settings, CI / CD, Variables".
+#    Add four new variables: PROD_REGISTRY_USER, PROD_REGISTRY_PASSWORD,
+#    DEV_REGISTRY_USER and DEV_REGISTRY_PASSWORD containing the user names
+#    and tokens you just generated respectively.
+#
+# 2. Setup ssh credentials for DEV and PROD
+#    Best practise is to create new ssh keys for EVERY HOST. So, open your
+#    terminal and type: `ssh-keygen -t rsa -b 4096` Choose a path where to
+#    save the file and give it a proper name: `project_development_rsa`
+#    Copy the public key: `cat keyname_rsa.pub | pbcopy`, ssh into your
+#    development server, and add it to the `~/.ssh/authorized_keys`
+#    file. The ssh user needs permission to run docker on this host!
+#    Repeat the same thing for production. Next step is to gather ssh
+#    fingerprints from your hosts. Jump into your terminal an run
+#    `ssh-keyscan your-host.com`. Copy and write down the output for later.
+#    Repeat that for your production host too. Go to "Project, Settings,
+#    CI / CD, Variables" and create new variables DEV_DOCKER_HOST and
+#    PROD_DOCKER_HOST containing the hostnames or ip addresses of your
+#    servers, in this format: ssh://username@example.com:port
+#    For example: ssh://root@picky-penguin.digitalocean.com
+#    Add DEV_SSH_FINGERPRINT and PROD_SSH_FINGERPRINT variables with the
+#    results from ssh-keyscan that you've written down earlier. Finally
+#    add DEV_SSH_KEY and PROD_SSH_KEY with the contents of the PRIVATE
+#    key you've generated earlier. You can simply put it into your clipboard
+#    by running `cat keyname_rsa | pbcopy`.
+#
+# 3. Setup secrets for DEV and PROD
+#    Head over to "Project, Settings, CI / CD, Variables". You're already
+#    on this page? Awesome! You need to generate passwords now. I always
+#    use pwgen (https://linux.die.net/man/1/pwgen) for this, but use whatever
+#    you feel comfortable with. Generate 8 random passwords, make sure they don't
+#    contain special characters as this can lead to problems. Now, create the
+#    following new variables and use a different password for each: PROD_MYSQL_DATABASE,
+#    PROD_MYSQL_USER, PROD_MYSQL_PASSWORD, PROD_MYSQL_ROOT_PASSWORD, DEV_MYSQL_DATABASE,
+#    DEV_MYSQL_USER, DEV_MYSQL_PASSWORD, DEV_MYSQL_ROOT_PASSWORD. Yes, we use
+#    random passwords for the user and database name. This is best practise as it
+#    makes it harder for attackers to guess it. Take your local .env file into
+#    a editor and paste those database credentials for development in. Make sure
+#    to also alter the APP_KEY and set everything up for your development environment.
+#    Repeat that step for production. Now create two new variables: DEV_ENV and PROD_ENV
+#    and paste in the contents of the respective .env files.
+#
+# 4. Configure the garbage collection
+#    Visit "Project, Settings, CI / CD,  Cleanup policy for tags" and make sure it's
+#    enabled. Set the expiration interval to `7 days`, the expiration schedule to
+#    `Every day` and the number of tags to `5 tags per image name` and add
+#    `.*` to the "Tags with names matching this regex pattern will expire" textbox.
+#    Hit "Set cleanup policy" and you're done. What's happening here? Because we use
+#    different image names for each environment and the build process, it retains the
+#    latest 5 images for production, but effectively cleans most of the build process images.
+#
+# 5. Add your domain name
+#    Visit "Project, Settings, CI / CD, Variables" and add new DEV_DOMAIN and
+#    PROD_DOMAIN variables containing the public Domain name of your server.
+#    For example: noise-narwahl.digitalocean.com
+#    GitLab uses this domain name to configure review apps. So, make sure all
+#    subdomains of the development domain point to the same host. You can simply
+#    add a wildcard A record (*) to your dns settings.
+#    That's it. GitLab is now configured!
+#
+# 6. Here's a checklist of all CI/CD variables, so you don't forget anything
+#    (it's sorted alphabetically, just like in GitLab)
+#
+#    * [ ] PROD_DOCKER_HOST = hostname and user for the production server, e.g. ssh://username@example.com
+#    * [ ] PROD_DOMAIN = domain of the production server, e.g. example.com
+#    * [ ] PROD_REGISTRY_PASSWORD = production password for the registry (deploy token)
+#    * [ ] PROD_REGISTRY_USER = production username for the registry (deploy token)
+#    * [ ] PROD_SSH_FINGERPRINT = ssh fingerprint for the production server, get it via ssh-keyscan
+#    * [ ] PROD_SSH_KEY = private ssh key for the production server, generate it via ssh-keygen
+
+# ----------------------------------------------------------------------
+# Basics
+# ----------------------------------------------------------------------
+
+image: ueberdosis/build-tools:0.23.0
+
+stages:
+  - build
+  - test
+  - review
+  - deploy
+
+# ----------------------------------------------------------------------
+# Set default variables
+# ----------------------------------------------------------------------
+
+variables:
+  # What docker-compose file to use by default
+  COMPOSE_FILE: docker-compose.ci.yml
+  # Prefix the docker-compose project name with the path of the current project
+  # so you can identify it via docker ps and add the current job id as suffix
+  # to allow concurrent stacks
+  COMPOSE_PROJECT_NAME: ci-$CI_PROJECT_NAME-$CI_JOB_ID
+  # The default image name will be prefixed with build, so we can
+  # use GitLabs garbage collection to target them separately from
+  # the released images
+  IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH/build
+  # The name of released images will be prefixed by release and the current
+  # branch name
+  IMAGE_RELEASE: $CI_REGISTRY/$CI_PROJECT_PATH/release-$CI_COMMIT_REF_SLUG
+  # Set the tag of the images to "branch-checksum"
+  # It is best practise and really important to build and test images per
+  # commit and branch to prevent overlapping and failures.
+  TAG: $CI_COMMIT_REF_SLUG-$CI_COMMIT_SHA
+  # Set default registry variables which can be overridden to use external
+  # docker registries
+  REGISTRY: $CI_REGISTRY
+  REGISTRY_USER: gitlab-ci-token
+  REGISTRY_PASSWORD: $CI_BUILD_TOKEN
+  # A comma separated list of secret environment variables that will be hashed
+  # in the deployment process. If you have more secrets, add them to this list.
+  # If you want to define those secrets in the CI/CD Variables settings, make
+  # sure to prefix them with PROD_ or DEV_ respectively. Take a look at the
+  # deployment job to see how it's using the secrets for different environments.
+  SECRETS: ENV,MYSQL_ROOT_PASSWORD,MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD
+  # The name of the stack that will be deployed to PROD or DEV. Will be the
+  # current project path slug and the current environment. Allows deploying
+  # multiple projects and environments to the same Docker Swarm host.
+  STACK_NAME: $CI_PROJECT_PATH_SLUG-$CI_ENVIRONMENT_SLUG
+
+# ----------------------------------------------------------------------
+# Initialize
+# ----------------------------------------------------------------------
+
+before_script:
+  # Logs into the docker registry.
+  - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY
+  # Defines a bash function to allow easy copying of files and folders
+  # from containers to the current working directory. For example, copy
+  # the screenshots after running Laravel Dusk:
+  # copy_from_container "app:/var/www/tests/Browser/screenshots"
+  - |
+    function copy_from_container() {
+      if [ ! -z "$1" ]; then
+        CONTAINER_NAME=$(echo $1 | cut -d':' -f 1)
+        CONTAINER_PATH=$(echo $1 | cut -d':' -f 2)
+        CONTAINER_ID=$(docker-compose ps -q $CONTAINER_NAME)
+        docker cp $CONTAINER_ID:$CONTAINER_PATH .
+      fi
+    }
+  # Defines a bash function to allow waiting until a container becomes
+  # "healthy". You should always wait for a container to become healthy
+  # before running scripts inside: this is very useful for running tests.
+  # It has a built in timeout of 5 minutes. Usage: wait_for "app"
+  - |
+    function wait_for() {
+      COUNTER=0
+      CONTAINER=$(docker-compose ps -q $1)
+      STATUS="starting"
+
+      while [ "$STATUS" != "healthy" ]; do
+        STATUS=$(docker inspect -f {{.State.Health.Status}} $CONTAINER)
+        STATE=$(docker inspect -f {{.State.Status}} $CONTAINER)
+        sleep 1
+
+        if [ "$STATE" == "exited" ]; then
+          docker start $CONTAINER
+        fi
+
+        ((COUNTER=COUNTER+1))
+
+        if [ $COUNTER -gt 300 ]; then
+          echo "Timeout after waiting for 5 minutes…"
+          exit 1
+        fi
+      done
+    }
+  # Defines a function that setups and configures the SSH credentials.
+  # The ssh-agent doesn't work reliably, so we need to setup the default
+  # ssh key by hand here. Usage: setup_ssh
+  - |
+    function setup_ssh() {
+      if [ -z "$SSH_KEY" ] || [ -z "$SSH_FINGERPRINT" ]; then
+          echo "ERROR! SSH_KEY or SSH_FINGERPRINT not set!"
+          exit 1
+      fi
+
+      mkdir -p ~/.ssh
+      chmod 700 ~/.ssh
+      echo "$SSH_FINGERPRINT" > ~/.ssh/known_hosts
+      chmod 644 ~/.ssh/known_hosts
+      echo "$SSH_KEY" > ~/.ssh/id_rsa
+      chmod 600 ~/.ssh/id_rsa
+    }
+
+# ----------------------------------------------------------------------
+# Build
+# ----------------------------------------------------------------------
+
+# We're Overwrite the COMPOSE_FILE variable in the build section to use
+# the compose file that includes build instructions
+
+build_nginx:
+  variables:
+    COMPOSE_FILE: docker-compose.build.yml
+  stage: build
+  except:
+    - schedules
+  script:
+    - docker-compose build nginx
+    - docker-compose push nginx
+
+# ----------------------------------------------------------------------
+# Deploy Template
+# ----------------------------------------------------------------------
+
+.template_deploy: &deploy_definition
+  script:
+    - setup_ssh
+    # Tag the built images as release images and push them to the registry
+    - docker pull $IMAGE/app:$TAG
+    - docker tag $IMAGE/app:$TAG $IMAGE_RELEASE/app:$TAG
+    - docker push $IMAGE_RELEASE/app:$TAG
+    - sleep 5
+    # Before deployment we log again into the docker registry. The
+    # DEPLOYMENT_REGISTRY_USER and DEPLOYMENT_REGISTRY_PASSWORD variables
+    # should be set in the job with the credentials that have been manually
+    # setup before. Reason for this: The build token generated by GitLab
+    # expires after a certain amount of time. But we don't want the registry
+    # authentication on the production host to ever expire. That's why we have
+    # to setup credentials on our own.
+    - docker login -u $DEPLOYMENT_REGISTRY_USER -p $DEPLOYMENT_REGISTRY_PASSWORD $REGISTRY
+    # Before deploying the app we need to change the docker host to the
+    # machine we actually want to deploy to
+    - export DOCKER_HOST=$DEPLOY_DOCKER_HOST
+    # Loop through the SECRETS list of environment variables, save the contents
+    # of each variable into a text file, create a hash of the text file and
+    # export that hash as environment variable suffixing the secret name with HASH.
+    # We're using the hash inside the docker-compose production config to set the name
+    # of the secret, thus forcing docker to refresh secrets when they change.
+    # Docker Swarm would'nt do this on it's own and store a secret forever, never
+    # updating it.
+    - |
+      IFS=',' ; for SECRET in `echo "$SECRETS"`; do
+          echo "${!SECRET}" > "$SECRET.txt"
+          SECRET_HASH=$(sha512sum "$SECRET.txt" | cut -c1-16)
+          export ${SECRET}_HASH=${SECRET_HASH}
+      done
+    # Deploy the stack, yay!
+    - docker stack deploy -c $COMPOSE_FILE --with-registry-auth --prune $STACK_NAME
+
+
+# ----------------------------------------------------------------------
+# Deploy
+# ----------------------------------------------------------------------
+
+deploy_production:
+  stage: deploy
+  only:
+    refs:
+      - main
+      - master
+  environment:
+    name: production
+    url: https://$PROD_DOMAIN
+  variables:
+    HOST_NAME: $PROD_DOMAIN
+    SSH_KEY: $PROD_SSH_KEY
+    SSH_FINGERPRINT: $PROD_SSH_FINGERPRINT
+    COMPOSE_FILE: docker-compose.prod.yml
+    DEPLOY_DOCKER_HOST: $PROD_DOCKER_HOST
+    DEPLOYMENT_REGISTRY_USER: $PROD_REGISTRY_USER
+    DEPLOYMENT_REGISTRY_PASSWORD: $PROD_REGISTRY_PASSWORD
+  <<: *deploy_definition
