@@ -9,7 +9,6 @@ x-update-config: &update-config
     delay: 0s
 
 services:
-
   nginx:
     image: $IMAGE_RELEASE/nginx:$TAG
     networks:
