@@ -159,7 +159,7 @@ build_nginx:
   stage: build
   script:
     - echo "$COMPOSE_FILE"
-    - ls -la
+    - cat $COMPOSE_FILE
     - docker-compose build nginx
     - docker-compose push nginx
 
