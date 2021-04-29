@@ -169,9 +169,9 @@ build_nginx:
   script:
     - setup_ssh
     # Tag the built images as release images and push them to the registry
-    - docker pull $IMAGE/app:$TAG
-    - docker tag $IMAGE/app:$TAG $IMAGE_RELEASE/app:$TAG
-    - docker push $IMAGE_RELEASE/app:$TAG
+    - docker pull $IMAGE/nginx:$TAG
+    - docker tag $IMAGE/nginx:$TAG $IMAGE_RELEASE/nginx:$TAG
+    - docker push $IMAGE_RELEASE/nginx:$TAG
     - sleep 5
     # Before deployment we log again into the docker registry. The
     # DEPLOYMENT_REGISTRY_USER and DEPLOYMENT_REGISTRY_PASSWORD variables
