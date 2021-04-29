@@ -87,9 +87,6 @@
 
 image: ueberdosis/build-tools:0.23.0
 
-services:
-  - docker:dind
-
 stages:
   - build
   - deploy
