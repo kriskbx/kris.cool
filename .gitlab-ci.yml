@@ -158,8 +158,6 @@ build_nginx:
     COMPOSE_FILE: docker-compose.build.yml
   stage: build
   script:
-    - echo "$COMPOSE_FILE"
-    - cat $COMPOSE_FILE
     - docker-compose build nginx
     - docker-compose push nginx
 
