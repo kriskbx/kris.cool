@@ -89,8 +89,6 @@ image: ueberdosis/build-tools:0.23.0
 
 stages:
   - build
-  - test
-  - review
   - deploy
 
 # ----------------------------------------------------------------------
@@ -98,8 +96,6 @@ stages:
 # ----------------------------------------------------------------------
 
 variables:
-  # What docker-compose file to use by default
-  COMPOSE_FILE: docker-compose.ci.yml
   # Prefix the docker-compose project name with the path of the current project
   # so you can identify it via docker ps and add the current job id as suffix
   # to allow concurrent stacks
@@ -120,12 +116,6 @@ variables:
   REGISTRY: $CI_REGISTRY
   REGISTRY_USER: gitlab-ci-token
   REGISTRY_PASSWORD: $CI_BUILD_TOKEN
-  # A comma separated list of secret environment variables that will be hashed
-  # in the deployment process. If you have more secrets, add them to this list.
-  # If you want to define those secrets in the CI/CD Variables settings, make
-  # sure to prefix them with PROD_ or DEV_ respectively. Take a look at the
-  # deployment job to see how it's using the secrets for different environments.
-  SECRETS: ENV,MYSQL_ROOT_PASSWORD,MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD
   # The name of the stack that will be deployed to PROD or DEV. Will be the
   # current project path slug and the current environment. Allows deploying
   # multiple projects and environments to the same Docker Swarm host.
@@ -138,46 +128,6 @@ variables:
 before_script:
   # Logs into the docker registry.
   - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY
-  # Defines a bash function to allow easy copying of files and folders
-  # from containers to the current working directory. For example, copy
-  # the screenshots after running Laravel Dusk:
-  # copy_from_container "app:/var/www/tests/Browser/screenshots"
-  - |
-    function copy_from_container() {
-      if [ ! -z "$1" ]; then
-        CONTAINER_NAME=$(echo $1 | cut -d':' -f 1)
-        CONTAINER_PATH=$(echo $1 | cut -d':' -f 2)
-        CONTAINER_ID=$(docker-compose ps -q $CONTAINER_NAME)
-        docker cp $CONTAINER_ID:$CONTAINER_PATH .
-      fi
-    }
-  # Defines a bash function to allow waiting until a container becomes
-  # "healthy". You should always wait for a container to become healthy
-  # before running scripts inside: this is very useful for running tests.
-  # It has a built in timeout of 5 minutes. Usage: wait_for "app"
-  - |
-    function wait_for() {
-      COUNTER=0
-      CONTAINER=$(docker-compose ps -q $1)
-      STATUS="starting"
-
-      while [ "$STATUS" != "healthy" ]; do
-        STATUS=$(docker inspect -f {{.State.Health.Status}} $CONTAINER)
-        STATE=$(docker inspect -f {{.State.Status}} $CONTAINER)
-        sleep 1
-
-        if [ "$STATE" == "exited" ]; then
-          docker start $CONTAINER
-        fi
-
-        ((COUNTER=COUNTER+1))
-
-        if [ $COUNTER -gt 300 ]; then
-          echo "Timeout after waiting for 5 minutes…"
-          exit 1
-        fi
-      done
-    }
   # Defines a function that setups and configures the SSH credentials.
   # The ssh-agent doesn't work reliably, so we need to setup the default
   # ssh key by hand here. Usage: setup_ssh
@@ -207,8 +157,6 @@ build_nginx:
   variables:
     COMPOSE_FILE: docker-compose.build.yml
   stage: build
-  except:
-    - schedules
   script:
     - docker-compose build nginx
     - docker-compose push nginx
@@ -236,19 +184,6 @@ build_nginx:
     # Before deploying the app we need to change the docker host to the
     # machine we actually want to deploy to
     - export DOCKER_HOST=$DEPLOY_DOCKER_HOST
-    # Loop through the SECRETS list of environment variables, save the contents
-    # of each variable into a text file, create a hash of the text file and
-    # export that hash as environment variable suffixing the secret name with HASH.
-    # We're using the hash inside the docker-compose production config to set the name
-    # of the secret, thus forcing docker to refresh secrets when they change.
-    # Docker Swarm would'nt do this on it's own and store a secret forever, never
-    # updating it.
-    - |
-      IFS=',' ; for SECRET in `echo "$SECRETS"`; do
-          echo "${!SECRET}" > "$SECRET.txt"
-          SECRET_HASH=$(sha512sum "$SECRET.txt" | cut -c1-16)
-          export ${SECRET}_HASH=${SECRET_HASH}
-      done
     # Deploy the stack, yay!
     - docker stack deploy -c $COMPOSE_FILE --with-registry-auth --prune $STACK_NAME
 
