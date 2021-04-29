@@ -161,6 +161,8 @@ build_nginx:
     COMPOSE_FILE: docker-compose.build.yml
   stage: build
   script:
+    - which docker
+    - docker ps
     - docker-compose build nginx
     - docker-compose push nginx
 
