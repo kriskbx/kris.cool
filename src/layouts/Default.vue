@@ -7,11 +7,11 @@
 
             <p class="header__intro">
                 » I’m a backend developer, currently working at
-                <a href="https://ueber.io" target="_blank">überdosis</a>. I mostly use PHP and the
-                Laravel framework for backend development as well as Vue.js or Alpine.js for frontend work. I’m
-                a huge workflow automation nerd and can’t shut up about Docker, Continuos Integration and all
-                DevSecOps related topics. Also I’m really into Open Source and publish many things I make on
-                GitHub. «
+                <a href="https://www.iu.de" target="_blank">IU - International University of applied sciences</a>.
+                I mostly use PHP and the Laravel framework for backend development as well as Vue.js or Alpine.js
+                for frontend work. I’m a huge workflow automation nerd and can’t shut up about Docker, Continuos
+                Integration and all DevSecOps related topics. Also I’m really into Open Source and publish many
+                things I make on GitHub. «
             </p>
 
             <Navigation :links="[
