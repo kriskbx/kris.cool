@@ -8,13 +8,12 @@
             <h3>Information provided according to Sec. 5 German Telemedia Act (TMG):</h3>
 
             <p>Kris Siepert<br>
-                Friedrichstraße 123<br>
+                Friedrichstraße 114a<br>
                 10117 Berlin<br></p>
 
             <h4>Contact</h4>
 
-            <p>Telephone: +493028852787<br>
-                Email: m@kris.cool</p>
+            <p>Email: m@kris.cool</p>
 
             <h4>VAT</h4>
 
