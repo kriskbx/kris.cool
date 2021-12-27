@@ -15,6 +15,7 @@
                     <p>I also make cool short films and videos. <a href="https://vimeo.com/kriskbx" target="_blank">At
                         first as freelancer</a> for clients & agencies but now
                         it’s more of a hobby.</p>
+                    <p>From time to time I also take freelance jobs for design, videoproduction or coding. I also got a large network of nice and skilled fellow freelancers and agencies, so hit me up if you got something.</p>    
                     <p>Personally I like birds, science, hiking & being outdoors, longboards as well as Indie/Hardcore-Punk music.</p>
                 </div>
 
