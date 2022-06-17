@@ -15,11 +15,6 @@
 
             <p>Email: m@kris.cool</p>
 
-            <h4>VAT</h4>
-
-            <p>VAT Id number according to Sec. 27 a German Value Added Tax Act:<br>
-                DE291044767</p>
-
             <h3>Responsible for contents acc. to Sec. 55, para. 2 German Federal Broadcasting Agreement (RstV):</h3>
 
             <p>Kris Siepert</p>
@@ -72,6 +67,7 @@
 <script>
     import Page from '@/layouts/Page'
     import Inner from "@/components/Inner"
+
 
     export default {
         components: {

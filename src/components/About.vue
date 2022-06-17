@@ -6,17 +6,13 @@
                 <g-image src="~/assets/images/about.jpg" width="860"/>
                 <div class="footer__about">
                     <p>Hej again. 👋 My name is Kris and I’m the guy with that cool domain name.</p>
-                    <p>In 2012 I got my Bachelor of Engineering degree in Mediaproduction & Mediatechnology. Since
-                        then I worked for an international Garden Exhibition as Graphic Designer, for several
-                        clients & agencies as Freelance Full Stack Developer and at <a href="https://ueber.io" target="_blank">überdosis</a>
-                        as Backend Developer and DevOps Engineer. Since 2021 I’m at <a href="https://iu.de" target="_blank">IU - International University of applied sciences</a>
-                        as Senior Full Stack Developer.</p>
-                    <p>Out of pure curiosity I studied "Transport Systems: Aeronautics and space engineering" for a couple of semesters besides my day job. I love STEM stuff and wanted to learn something new.</p>
-                    <p>I also make cool short films and videos. <a href="https://vimeo.com/kriskbx" target="_blank">At
-                        first as freelancer</a> for clients & agencies but now
-                        it’s more of a hobby.</p>
-                    <p>From time to time I also take freelance jobs for design, videoproduction or coding. I also got a large network of nice and skilled fellow freelancers and agencies, so hit me up if you got something.</p>    
-                    <p>Personally I like birds, science, hiking & being outdoors, longboards as well as Indie/Hardcore-Punk music.</p>
+                    <p>I've been working professionally in this industry since I've got my bachelor of engineering degree in 2012, mainly as a freelance web and software developer. In 2018 I decided to give up being a freelancer, because I really enjoy working with other amazing people in a team. At first I helped <a href="https://ueber.io" target="_blank">überdosis</a> building software for clients and created & maintained open source projects. In 2021 I joined <a href="https://www.iu-group.com/" target="_blank">IU Group</a> to help them bringing education to everybody.</p>
+
+                    <p>Out of pure curiosity I studied "aeronautics and space engineering" for a couple of semesters besides my day job. I love STEM stuff and wanted to learn something new.</p>
+
+                  <p>After work, I <a href="https://vimeo.com/kriskbx" target="_blank">film & edit short videos</a>, go cycling, hiking, spend time outdoors and organize small underground concerts. I like birds, longboards, science and <a href="https://open.spotify.com/playlist/3QgzseDIOG1zd2WIA37D5j" target="_blank">Indie</a>/<a href="https://open.spotify.com/playlist/0r8oK6NC6oHy8neqv4oIUo?si=9b09cd4e48914d65" target="_blank">HC-Punk</a> music.</p>
+
+                  <p>From time to time I also take freelance jobs for design, video-production or coding. I also got a large network of nice and skilled fellow freelancers and agencies, so hit me up if you got something.</p>
                 </div>
 
                 <Navigation :links="links"/>

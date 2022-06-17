@@ -191,5 +191,13 @@
                 fill: $colorRed;
             }
         }
+
+      &--black #{$this}-title {
+        color: $colorBlack;
+
+        svg path {
+          fill: $colorBlack;
+        }
+      }
     }
 </style>

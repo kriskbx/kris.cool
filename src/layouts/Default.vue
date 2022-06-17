@@ -6,12 +6,8 @@
             </template>
 
             <p class="header__intro">
-                » I’m a backend developer, currently working at
-                <a href="https://www.iu.de" target="_blank">IU - International University of applied sciences</a>.
-                I mostly use PHP and the Laravel framework for backend development as well as Vue.js or Alpine.js
-                for frontend work. I’m a huge workflow automation nerd and can’t shut up about Docker, Continuos
-                Integration and all DevSecOps related topics. Also I’m really into Open Source and publish many
-                things I make on GitHub. «
+                » I’m a Senior Fullstack Developer.<br />
+              I mainly use PHP and the Laravel framework for backend work, but I also speak TypeScript and really enjoy frontend stuff with Vue.js. I have a lot of DevOps experience as well and cannot shut up about improving workflows and processes. Writing great documentation as well as clean & maintainable code is my passion. I love driving technical design as well as providing sponsorship and mentorship to level up my team. I also really dig test-driven development and pair programming. «
             </p>
 
             <Navigation :links="[
