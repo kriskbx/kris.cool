@@ -10,6 +10,8 @@
               I mainly use PHP and the Laravel framework for backend work, but I also speak TypeScript and really enjoy frontend stuff with Vue.js. I have a lot of DevOps experience as well and cannot shut up about improving workflows and processes. Writing great documentation as well as clean & maintainable code is my passion. I love driving technical design as well as providing sponsorship and mentorship to level up my team. I also really dig test-driven development and pair programming. «
             </p>
 
+            <a rel="me" href="https://bumscode.com/@kris" style="display:none;"></a>
+
             <Navigation :links="[
                 {
                     label: 'GitHub',
@@ -20,8 +22,8 @@
                     url: 'https://vimeo.com/kriskbx'
                 },
                 {
-                    label: 'Twitter',
-                    url: 'https://twitter.com/kriskbx'
+                    label: 'Mastodon',
+                    url: 'https://bumscode.com/@kris'
                 },
                 {
                     label: 'Mail',
