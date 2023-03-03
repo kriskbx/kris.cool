@@ -6,8 +6,7 @@
             </template>
 
             <p class="header__intro">
-                » I’m a Senior Fullstack Developer.<br />
-              I mainly use PHP and the Laravel framework for backend work, but I also speak TypeScript and really enjoy frontend stuff with Vue.js. I have a lot of DevOps experience as well and cannot shut up about improving workflows and processes. Writing great documentation as well as clean & maintainable code is my passion. I love driving technical design as well as providing sponsorship and mentorship to level up my team. I also really dig test-driven development and pair programming. «
+                » I’m a Senior+ Software Engineer.<br />I mainly focus on PHP and the Laravel framework for backend work, but I also speak TypeScript, really enjoy frontend stuff with Vue.js and I know my way around DevOps things as well. Writing great documentation as well as reliable, clean & maintainable code is my passion. I deeply care about people and love driving technical design & strategy as well as providing sponsorship and mentorship to level up my team. I also really dig test-driven development and pair programming.«
             </p>
 
             <a rel="me" href="https://bumscode.com/@kris" style="display:none;"></a>
@@ -31,7 +30,7 @@
                 },
             ]"/>
         </Header>
-
+x
         <div class="default__content">
             <slot/>
         </div>
