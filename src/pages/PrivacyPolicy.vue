@@ -9,7 +9,7 @@
 
             <h4>General</h4>
 
-            <p>The following gives a simple overview of what happens to your personal information whenyou visit our
+            <p>The following gives a simple overview of what happens to your personal information when you visit our
                 website. Personal information is any data with which you could be personally identified. Detailed
                 information on the subject of data protection can be found in our privacy policy found below.
                 Data collection on our website</p>
@@ -166,6 +166,10 @@
 
             <p>The basis for data processing is Art. 6 (1) (f) DSGVO, which allows the processing of data to fulfill a
                 contract or for measures preliminary to a contract.</p>
+
+            <h4>Cloudflare</h4>
+
+            <p>The website is using the service provider Cloudflare (Cloudflare Inc., 101 Townsend St, San Francisco, CA 94107, USA) as DNS nameserver. Traffic from the website will not be routed through Cloudflares servers or networks and no data will be collected that way.</p>
         </Inner>
     </Page>
 </template>
