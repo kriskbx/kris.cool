@@ -4,7 +4,10 @@
             Error: 404
         </template>
         <Inner>
-            <div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/3o7WTE9vEh086AqDQs" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+            <g-image src="~/assets/images/404.gif" class="gif"/>
+            <p class="credits">
+              &copy; by <a href="https://www.jecamartinez.com/" target="_blank">Jeca Martinez</a>
+            </p>
         </Inner>
     </Page>
 </template>
@@ -23,3 +26,15 @@
         },
     }
 </script>
+
+<style lang="scss">
+  .credits {
+    font-size: .875rem;
+    color: #747474;
+  }
+
+  .gif {
+    width: 100%;
+    height: auto;
+  }
+</style>
