@@ -2,7 +2,7 @@
     <Layout>
         <Inner>
             <div class="work">
-                <h2 class="work__title">Work</h2>
+                <h2 class="work__title">Work*</h2>
                 <WorkItem :color="edge.node.color"
                           :content="edge.node.content"
                           :excerpt="edge.node.excerpt"
@@ -12,6 +12,9 @@
                           :url="edge.node.url"
                           :url_label="edge.node.url_label"
                           v-for="edge in $static.work.edges"/>
+              <p class="work__addendum">
+                *This list is unfortunately not up-to-date. There were so many fascinating challenges and projects I worked on recently, but you know how it is: Writing them down and keeping everything up-to-date is quite a lot of work. Stay tuned, I'll hope to update this section very soon&trade;.
+              </p>
             </div>
         </Inner>
     </Layout>
@@ -60,6 +63,11 @@
             text-align: center;
             color: $colorGrey;
             margin-bottom: 4rem;
+        }
+
+        &__addendum {
+          font-size: .875rem;
+          padding: 0 2rem;
         }
     }
 </style>
