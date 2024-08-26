@@ -14,6 +14,13 @@ watch(
   { immediate: true },
 );
 
+watch(data, () => {
+  if (!data.value) return;
+  useHead({
+    title: `kris.cool ~ ${data.value?.title}`,
+  });
+});
+
 const { data: workItems } = await useAsyncData('workItems', () =>
   queryContent<WorkItem>(`/work`).find(),
 );

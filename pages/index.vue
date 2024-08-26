@@ -1,4 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+  title: 'kris.cool',
+  meta: [
+    {
+      name: 'description',
+      content: "Hej, I'm Kris, a Senior+ Software Engineer.",
+    },
+  ],
+});
+</script>
 
 <template>
   <Header />

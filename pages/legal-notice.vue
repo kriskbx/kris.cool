@@ -2,6 +2,9 @@
 definePageMeta({
   layout: 'static',
 });
+useHead({
+  title: 'kris.cool ~ Legal Notice',
+});
 </script>
 
 <template>

@@ -27,7 +27,7 @@ const props = defineProps<{
       </p>
       <p v-if="props.recording"></p>
       <p v-else class="flex items-center gap-2 text-stone-500">
-        <CameraSlash class="h-4 fill-current" />
+        <CameraSlash class="h-4 fill-current" aria-hidden="true" />
         <span>No public recording available!</span>
       </p>
     </template>

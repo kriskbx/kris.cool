@@ -9,7 +9,7 @@ const { data: workItems } = await useAsyncData('work', () =>
 <template>
   <Section>
     <template #headline
-      ><span aria-hidden="true">🚀</span> selected work</template
+      ><span aria-hidden="true">🚀</span> selected projects</template
     >
     <template #default>
       <ul class="grid gap-4 sm:grid-cols-2">
