@@ -194,10 +194,13 @@ definePageMeta({
     browser automatically transmits to us in "server log files". These are:
   </p>
 
-  <p>
-    Browser type and browser version Operating system used Referrer URL Host
-    name of the accessing computer Time of the server request
-  </p>
+  <ul>
+    <li>Browser type and browser version</li>
+    <li>Operating system used</li>
+    <li>Referrer URL</li>
+    <li>Host name of the accessing computer</li>
+    <li>Time of the server request</li>
+  </ul>
 
   <p>These data will not be combined with data from other sources.</p>
 
