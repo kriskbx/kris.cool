@@ -1,4 +1,4 @@
-FROM node:18.18.2 as builder
+FROM node:20.17.0 as builder
 
 RUN curl -fsSL https://bun.sh/install | bash
 

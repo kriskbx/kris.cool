@@ -24,7 +24,7 @@ const props = withDefaults(
           </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="legal-notice" class="hover:underline">
+          <NuxtLink to="/legal-notice" class="hover:underline">
             Legal Notice
           </NuxtLink>
         </li>
