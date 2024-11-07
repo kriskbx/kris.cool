@@ -4,7 +4,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: "Hej, I'm Kris, a Senior+ Software Engineer.",
+      content: "Hej, I'm Kris, a Senior+ Software Engineer!",
     },
   ],
 });
