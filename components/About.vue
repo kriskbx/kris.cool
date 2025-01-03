@@ -22,29 +22,29 @@
           name.
         </p>
         <p>
-          I've been working professionally in this industry since I've got my
-          bachelor of engineering degree in 2012, mainly as a freelance web and
-          software developer. In 2018 I decided to give up being a freelancer,
-          because I really enjoy working with other amazing people in a team. At
-          first I helped
-          <a href="https://tiptap.dev">überdosis (which is now Tiptap)</a>
-          building software for clients and created & maintained open source
-          projects. In 2021 I joined
-          <a href="https://www.iu-group.com">IU Groups</a> effort to empower
-          everyone with education to grow.
+          I've been working professionally in the software industry since
+          completing my Bachelor of Engineering degree back in 2012. Over the
+          years, I've primarily worked as a freelancer for web and software
+          development, as well as at companies like
+          <a href="https://tiptap.dev">TipTap</a> (formerly known as überdosis)
+          and <a href="https://www.iu-group.com">IU Group</a>. Since 2024, I'm a
+          part of <a href="https://sozialhelden.de">Sozialheld:innen e.V.</a>,
+          where I help address social issues with technology and fight for a
+          more inclusive world.
         </p>
         <p>
-          After work, I
-          <a href="https://vimeo.com/kriskbx">film & edit short videos</a>, go
-          cycling, hiking, spend time outdoors and tinker with my home network &
-          server. I like birds, longboards, science, open-source, self-hosting
-          and Indie/HC-Punk music.
+          When I'm not working, you can find me
+          <a href="https://vimeo.com/kriskbx"
+            >filming and editing short videos </a
+          >, going for cycling or hiking trips, spending time outdoors, and
+          tinkering with my home network and server. I have a passion for birds,
+          science, open-source projects, self-hosting, and Indie/HC-Punk music.
         </p>
         <p>
-          From time to time I also take freelance jobs for design,
-          video-production or coding. I also got a large network of nice and
-          skilled fellow freelancers and agencies, so hit me up if you got
-          something.
+          In addition to my full-time role, I occasionally take on freelance
+          jobs in design, video production, or coding. I also have an extensive
+          network of skilled freelancers and agencies at my disposal, so feel
+          free to reach out if you need someone with expertise in these areas!
         </p>
       </div>
     </Container>
