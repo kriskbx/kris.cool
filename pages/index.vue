@@ -11,7 +11,6 @@ useHead({
 </script>
 
 <template>
-  <!-- This is a comment -->
   <Header />
   <main class="pt-8 sm:pt-16">
     <Work />
